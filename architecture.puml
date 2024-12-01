@@ -1,0 +1,25 @@
+@startuml Global architecture
+title Верхнеуровневая архитектура решения
+cloud "DNS " as dns
+package Clients as clients {
+    agent "Web <&laptop>" as web_client
+    agent "Mobile <&phone>" as mobile_client
+}
+
+cloud "CDN <&flash>" as cdn
+component "AntiDDOS <&shield>" as antiddos
+hexagon "Балансировщик\nнагрузки <&random>" as load_balancer
+
+node "ЦОД1" as cod1 
+node "ЦОД2" as cod2
+node "ЦОД3" as cod3
+clients -> cdn
+dns <- clients
+web_client --> antiddos
+mobile_client --> antiddos
+antiddos --> load_balancer
+load_balancer --> cod1
+load_balancer --> cod2
+load_balancer --> cod3
+
+@enduml

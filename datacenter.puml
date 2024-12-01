@@ -1,0 +1,30 @@
+@startuml datacenter architecture
+package "ЦОД" {
+    component "Servers" as servers {
+        node "Веб-сервер" as server1
+        node "Веб-сервер" as server2
+        node "Веб-сервер" as server3
+    }
+    queue "Очередь сообщений <&envelope-closed>" as q
+    component "Рабочие узлы" as workers {
+        node "Worker" as worker1
+        node "Worker" as worker2
+        node "Worker" as worker3
+    }
+    component "База данных" as databases {
+        database "Шард 1" as db1
+        database "Шард 2" as db2
+        database "Шард ..." as dbn
+    }
+    component "Кластер кэша" as caches {
+        cloud "Кэш" as cache1
+        cloud "Кэш" as cache2
+        cloud "Кэш" as cache3
+    }
+    servers -> q
+    q --> workers
+    servers --> databases
+    servers --> caches
+}
+
+@enduml
