@@ -27,4 +27,7 @@ package "ЦОД" {
     servers --> caches
 }
 
+database "<&folder> { }\nNoSQL" as nosql
+servers --> nosql
+
 @enduml
