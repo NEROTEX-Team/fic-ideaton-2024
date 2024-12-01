@@ -1,4 +1,5 @@
 @startuml datacenter architecture
+title Архитектура решения внутри ЦОДа
 package "ЦОД" {
     component "Servers" as servers {
         node "Веб-сервер" as server1
